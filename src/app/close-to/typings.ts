@@ -124,8 +124,8 @@ export class BruteForceResult {
 
         for (const operandSeed of allOperandsSeeds) {
             for (const inputDigitSeed of allInputsWithoutDuplicates) {
-                const equiation = buildEquation(inputDigitSeed, operandSeed)
-                const equationWithBraces = setBracesBetweenPairs(equiation);
+                const equation = buildEquation(inputDigitSeed, operandSeed)
+                const equationWithBraces = setBracesBetweenPairs(equation);
                 const currentValue = evaluateEquiation(equationWithBraces);
                 this.calculations++;
                 if (currentValue >= this.highestValue && currentValue <= target) {
