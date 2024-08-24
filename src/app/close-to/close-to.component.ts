@@ -29,7 +29,6 @@ export class CloseToComponent {
   }
 
   presentCurrentInputs(currentInputs: Die[]): string {
-    console.log('E')
     return currentInputs?.join(', ')
   }
 
