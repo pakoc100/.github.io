@@ -117,7 +117,7 @@ export class BruteForceResult {
         if (!target) return;
 
         const allInputs: number[][] = permutations(inputs);
-        const allInputsWithoutDuplicates = filterDuplicates(allInputs); navigator
+        const allInputsWithoutDuplicates = filterDuplicates(allInputs);
         const inputLength = inputs?.length;
         const operandsLength = inputLength - 1;
         const allOperandsSeeds = generateCombinationsWithRepetition(operators?.map(operator => operator.toString()), operandsLength);
