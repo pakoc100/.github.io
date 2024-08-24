@@ -1,0 +1,26 @@
+.frame {
+    display: grid;
+    // width: 100vw;
+    // height: 100vh;
+    // background-color: grey;
+}
+
+.content {
+    max-width: 412px;
+    max-height: 915px;
+    margin: auto;
+}
+
+@media (min-height: 950px) {
+    .content {
+        border: 2px solid #ff4d30;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 430px) {
+    .content {
+        border: 2px solid #ff4d30;
+        padding: 10px;
+    }
+}

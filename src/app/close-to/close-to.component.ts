@@ -1,36 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { bruteforceBiggestNumberToTarget } from './closeToHelper';
-
-const dice = [1, 2, 3, 4, 5, 6] as const;
-export type Die = typeof dice[number];
-
-const digits = [0, ...dice, 7, 8, 9] as const;
-export type Digit = typeof digits[number];
+import { Component } from '@angular/core';
+import { BruteForceResult, dice, Die, Digit, digits } from './typings';
 
 @Component({
   selector: 'app-close-to',
   templateUrl: './close-to.component.html',
   styleUrls: ['./close-to.component.scss']
 })
-export class CloseToComponent implements OnInit {
+export class CloseToComponent {
   dice = dice;
   digits = digits;
 
   targetResult: string = '';
 
-  highestResult?: number;
-  highestValueWay?: string;
-  resultCalculation?: string;
-
   currentInputs: Die[] = [];
+  bruteForceResult?: BruteForceResult;
 
-
-  ngOnInit(): void {
-    return;
-    this.targetResult = '61';
-    this.currentInputs = [2, 2, 5, 6, 6];
-    this.calculateMaximum(this.targetResult, this.currentInputs);
-  }
 
   addInput(addNumber: Die, currentInputs: Die[]): void {
     currentInputs.push(addNumber);
@@ -45,6 +29,7 @@ export class CloseToComponent implements OnInit {
   }
 
   presentCurrentInputs(currentInputs: Die[]): string {
+    console.log('E')
     return currentInputs?.join(', ')
   }
 
@@ -63,10 +48,13 @@ export class CloseToComponent implements OnInit {
 
   calculateMaximum(targetResult: string, currentInputs: Die[]): void {
     const target = parseInt(targetResult, 10);
-    const highestValue = bruteforceBiggestNumberToTarget(target, currentInputs);
-    console.log('highestValue: ', highestValue);
-    this.highestResult = highestValue.value;
-    this.highestValueWay = highestValue.way;
+    this.bruteForceResult = new BruteForceResult(target, currentInputs);
+  }
+
+  clearEverything() {
+    this.targetResult = '';
+    this.currentInputs = [];
+    this.bruteForceResult = undefined;
   }
 
 }

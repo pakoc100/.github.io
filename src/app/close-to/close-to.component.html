@@ -1,42 +1,82 @@
-<h2>Add inputs:</h2>
-
-<div *ngFor="let die of dice">
-    <button class="dieClass" (click)="addInput(die,currentInputs)">{{die}}</button>
+<div class="header">
+    Drunk dice calculator
 </div>
 
-<h2>Current inputs:</h2>
-<div class="inputLine">
-    <h2>{{presentCurrentInputs(currentInputs)}}</h2>
+<h4 style="text-align: center!important">Add inputs</h4>
 
-    <div *ngIf="currentInputs?.length" class="inputLine">
-        <button (click)="removeInput()">C</button>
-        <button (click)="removeAllInput()">CE</button>
+<div class="numberOuterContainer">
+    <div class="numberInputContainer1">
+        @for(die of dice; track die){
+        <button class="dieClass" (click)="addInput(die,currentInputs)">{{die}}</button>
+        }
+    </div>
+</div>
+
+@if(currentInputs.length){
+<div class="flexBox">
+    <h4>Current inputs: </h4>
+
+    <h4>{{presentCurrentInputs(currentInputs)}}</h4>
+</div>
+
+@if(currentInputs.length){
+<div class="flexBox">
+    <button class="textButton" (click)="removeInput()">Clear last input digit</button>
+    <button class="textButton" (click)="removeAllInput()">Clear input</button>
+</div>
+}
+
+}
+
+
+
+<h4 style="text-align: center!important">Add Target</h4>
+
+<div class="numberOuterContainer">
+    <div class="numberInputContainer2">
+        @for( digit of digits;track digit){
+        <button class="dieClass" (click)="addToTarget(digit,targetResult)">{{digit}}</button>
+        }
     </div>
 </div>
 
 
+@if(targetResult.length){
+<div class="flexBox">
+    <h4>Current target:</h4>
 
-<h2>Add Target:</h2>
 
-<div *ngFor="let digit of digits">
-    <button class="dieClass" (click)="addToTarget(digit,targetResult)">{{digit}}</button>
-</div>
-
-<h2>Current target:</h2>
-<div class="inputLine" *ngIf="targetResult">
-    <h2>{{targetResult}}</h2>
-
-    <div *ngIf="currentInputs?.length" class="inputLine">
-        <button (click)="calculateMaximum(targetResult,currentInputs)">Calculate</button>
-        <button (click)="removeTarget()">C</button>
-        <button (click)="removeWholeTarget()">CE</button>
-    </div>
+    <h4>{{targetResult}}</h4>
 </div>
 
 
 
+<div class="flexBox">
+    <button class="textButton" (click)="removeTarget()">Clear last target digit</button>
+
+    <button class="textButton" (click)="removeWholeTarget()">Clear target</button>
+</div>
+}
+
+@if(currentInputs.length && targetResult.length){
+<br>
+<div class="flexBox">
+    <button class="textButton" (click)="calculateMaximum(targetResult,currentInputs)">Calculate</button>
+    <button class="textButton" (click)="clearEverything()">Clear everything</button>
+</div>
+}
 
 
-<h2>Highest result is</h2>
-<h2>{{highestResult}}</h2>
-<h2>{{highestValueWay}}</h2>
+
+
+
+@if(bruteForceResult){
+<div class="flexBox">
+    <h4>Highest result is: </h4>
+    <h4>{{bruteForceResult.highestValue}}</h4>
+</div>
+<div class="flexBox">
+    <h4>By calculating: </h4>
+    <h4>{{bruteForceResult.way}}</h4>
+</div>
+}

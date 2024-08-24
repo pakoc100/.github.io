@@ -1,5 +1,23 @@
+.header {
+    color: #ff4d30;
+    font-weight: 900;
+    font-size: 37px;
+    text-align: center;
+    border-bottom: 5px solid #ff4d30;
+    margin-top: 30px;
+}
+
+button {
+    border-color: #ff4d30;
+    color: white;
+    border-radius: 7px;
+    background-color: #ff4d30;
+}
+
 .dieClass {
-    background-color: green;
+    font-weight: 800;
+    height: 60px;
+    width: 60px;
 }
 
 .inputLine {
@@ -7,4 +25,38 @@
     gap: 10px;
     align-items: baseline;
     justify-content: space-between;
+}
+
+.numberOuterContainer {
+    display: grid;
+}
+
+.numberInputContainer1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    margin: auto;
+}
+
+.numberInputContainer2 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    margin: auto;
+}
+
+.textButton {
+    padding: 10px;
+    font-size: 18px;
+    width: 200px;
+    border-radius: 7px;
+}
+
+h4 {
+    color: #ff4d30;
+    font-size: 22px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
