@@ -1,0 +1,42 @@
+<h2>Add inputs:</h2>
+
+<div *ngFor="let die of dice">
+    <button class="dieClass" (click)="addInput(die,currentInputs)">{{die}}</button>
+</div>
+
+<h2>Current inputs:</h2>
+<div class="inputLine">
+    <h2>{{presentCurrentInputs(currentInputs)}}</h2>
+
+    <div *ngIf="currentInputs?.length" class="inputLine">
+        <button (click)="removeInput()">C</button>
+        <button (click)="removeAllInput()">CE</button>
+    </div>
+</div>
+
+
+
+<h2>Add Target:</h2>
+
+<div *ngFor="let digit of digits">
+    <button class="dieClass" (click)="addToTarget(digit,targetResult)">{{digit}}</button>
+</div>
+
+<h2>Current target:</h2>
+<div class="inputLine" *ngIf="targetResult">
+    <h2>{{targetResult}}</h2>
+
+    <div *ngIf="currentInputs?.length" class="inputLine">
+        <button (click)="calculateMaximum(targetResult,currentInputs)">Calculate</button>
+        <button (click)="removeTarget()">C</button>
+        <button (click)="removeWholeTarget()">CE</button>
+    </div>
+</div>
+
+
+
+
+
+<h2>Highest result is</h2>
+<h2>{{highestResult}}</h2>
+<h2>{{highestValueWay}}</h2>
